@@ -5,12 +5,11 @@ translateHelp: true
 # Upgrade to Umi 3
 
 
-本文档将帮助你从 Umi 2.x 版本升级到 Umi 3.x 版本。
+This document will help you to upgrade Umi 2.x to Umi version 3.x.
 
 ## package.json
 
-修改 `umi` 的版本为 `^3.0.0` 或以上，
-
+Modify `umi` version to `^3.0.0` or higher
 ```diff
 {
   "devDependencies": {
@@ -20,21 +19,22 @@ translateHelp: true
 }
 ```
 
-由于 Umi 3 需要 Node 10.13 或以上，如果之前有配 engines，需确认下版本号。
+Since Umi 3 requires Node 10.13 or above, if you have engines before, you need to confirm the version number.
 
 ## tsconfig.json
 
-为了有更好的 ts 提示，需配置 `@@` 为 `["src/.umi/*"]`。
+To have better ts completions you have to specify `@@` as `["src/.umi/*"]`
 
 ```diff
 + "@@/*": ["src/.umi/*"]
 ```
 
-## 升级 umi-plugin-react 为 @umijs/preset-react
+## Change umi-plugin-react to @umijs/preset-react
 
+If you have used `umi-plugin-react` before, here are the modification steps.
 如果之前有使用 `umi-plugin-react`，以下是修改的步骤。
 
-先在 package.json 中修改依赖，
+First change dependencies in package.json file
 
 ```diff
 {
@@ -45,7 +45,7 @@ translateHelp: true
 }
 ```
 
-然后由于 Umi 3 的配置方式是拍平的方式，还需要修改配置，
+Then, because the configuration of Umi 3 is flat, you need to modify the configuration.
 
 ```diff
 export default {
@@ -62,16 +62,16 @@ export default {
 }
 ```
 
-注意：
+Pay attention
 
-1. 无需重复注册插件，Umi 3 会自动注册依赖中的 Umi 插件
-2. 配置提取到外面
+1. No need to register plugins manually, Umi 3 will automatically register Umi plugins in dependencies
+2. Plugin configuration extracted outside
 
-功能变化，
+Features changes
 
-* 删除了 routes、library、dll、hardSource、pwa、hd、fastClick、chunks，不可继续使用
-* 内置 dynamicImport、title、scripts、headScripts、metas 和 links 到 Umi 中，可继续使用
-* 其他功能不变
+* routes, library, dll, hardSource, pwa, hd, fastClick, chunks no longer available
+* you can still use dynamicImport, title, scripts, headScripts, metas, and links into Umi
+* no other functionality changed
 
 ## 配置层
 
